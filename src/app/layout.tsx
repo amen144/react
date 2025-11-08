@@ -43,7 +43,8 @@ export default function RootLayout({
         <div className="flex min-h-screen flex-col items-center justify-center bg-gray-900 p-8 bg-[url('/fjord.jpg')] bg-cover bg-center">
         {children}
         </div>
-        
+
+        <footer><p></p> <p className="center">contact support on <a href="mailto:amenjaballi08@gmail.com">amenjaballi08@gmail.com </a> or on <a href="contact:50175966">50175966</a></p></footer>
       </body>
     </html>
   );
