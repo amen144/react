@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import AudioControls from "../component/audioCtrl";
@@ -8,6 +8,23 @@ export default function AddNote() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [loading, setLoading] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    // Check if user is authenticated
+    if (typeof window === 'undefined') return;
+    
+    const token = localStorage.getItem("token");
+    const userID = localStorage.getItem("userID");
+    
+    if (!token || !userID) {
+      setIsAuthenticated(false);
+      router.replace("/");
+      return;
+    }
+    
+    setIsAuthenticated(true);
+  }, [router]);
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL; // Your backend URL
 
@@ -32,6 +49,16 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL; // Your backend URL
       setLoading(false);
     }
   };
+
+  // Don't render if not authenticated
+  if (isAuthenticated === false) {
+    return null;
+  }
+  
+  // Show loading state while checking authentication
+  if (isAuthenticated === null && typeof window !== 'undefined') {
+    return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4">

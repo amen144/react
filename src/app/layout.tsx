@@ -44,7 +44,7 @@ export default function RootLayout({
         {children}
         </div>
 
-        <footer><p></p> <p className="center">contact support on <a href="mailto:amenjaballi08@gmail.com">amenjaballi08@gmail.com </a> or on <a href="contact:50175966">50175966</a></p></footer>
+        <footer><p></p> <p className="center">contact support on <a href="mailto:amenjaballi08@gmail.com">amenjaballi08@gmail.com  </a>  or on <a href="contact:50175966">50175966</a></p></footer>
       </body>
     </html>
   );

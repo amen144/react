@@ -15,6 +15,23 @@ export default function EditNote() {
   const [loading, setLoading] = useState(true); // loading fetch
   const [saving, setSaving] = useState(false);  // saving state
   const [error, setError] = useState<string | null>(null);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    // Check if user is authenticated
+    if (typeof window === 'undefined') return;
+    
+    const token = localStorage.getItem('token');
+    const userID = localStorage.getItem('userID');
+    
+    if (!token || !userID) {
+      setIsAuthenticated(false);
+      router.replace('/');
+      return;
+    }
+    
+    setIsAuthenticated(true);
+  }, [router]);
 
   useEffect(() => {
     if (!noteId) {
@@ -60,6 +77,16 @@ export default function EditNote() {
       setSaving(false);
     }
   };
+
+  // Don't render if not authenticated
+  if (isAuthenticated === false) {
+    return null;
+  }
+  
+  // Show loading state while checking authentication
+  if (isAuthenticated === null && typeof window !== 'undefined') {
+    return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
+  }
 
   if (!noteId) {
     return <div className="p-4">Note id missing in route.</div>;
