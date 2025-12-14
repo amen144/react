@@ -10,7 +10,10 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL;
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`${API_URL}/auth/forgot-password`, { email });
+      const res = await axios.post("/api/auth/forgot-password", {
+        email
+      });
+      
       setMessage(res.data.message);
     } catch (err: any) {
       setMessage(err.response?.data?.message || "Something went wrong");
