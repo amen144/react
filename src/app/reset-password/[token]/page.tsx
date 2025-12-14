@@ -10,14 +10,13 @@ export default function ResetPasswordPage() {
 
   const [newPassword, setNewPassword] = useState("");
   const [message, setMessage] = useState("");
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!token) return setMessage("Invalid reset link");
 
     try {
-      const res = await axios.post(`${API_URL}/auth/reset-password`, {
+      const res = await axios.post("/api/auth/reset-password", {
         token,
         newPassword,
       });

@@ -3,8 +3,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
-
 export default function Home() {
   const [name, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -22,7 +20,7 @@ export default function Home() {
     setErrorMsg("");
     setSuccessMsg("");
     try {
-      const res = await axios.post(`${API_URL}/signup`, { name, email, password });
+      const res = await axios.post("/api/auth/signup", { name, email, password });
       if (res.data?.requiresVerification) {
         setTempToken(res.data.tempToken || null);
         setAwaitingVerification(true);
@@ -40,7 +38,7 @@ export default function Home() {
     if (e) e.preventDefault();
     setErrorMsg("");
     try {
-      const res = await axios.post(`${API_URL}/verify-signup`, {
+      const res = await axios.post("/api/auth/verify-signup", {
         email,
         code: verificationCode,
         tempToken,

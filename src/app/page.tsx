@@ -3,8 +3,6 @@ import React, { useRef, useState, useEffect } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
-
 export default function Home() {
   const [name, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -19,7 +17,7 @@ export default function Home() {
     e.preventDefault();
     setErrorMsg("");
     try {
-      const res = await axios.post(`${API_URL}/login`, { name, password });
+      const res = await axios.post("/api/auth/login", { name, password });
       if (res.data?.requires2FA) {
         setTempToken(res.data.tempToken || null);
         setAwaiting2FA(true);
@@ -40,7 +38,7 @@ export default function Home() {
     if (e) e.preventDefault();
     setErrorMsg("");
     try {
-      const res = await axios.post(`${API_URL}/verify-login`, { code: verificationCode, tempToken });
+      const res = await axios.post("/api/auth/verify-login", { code: verificationCode, tempToken });
       if (res.data?.token && res.data?.user) {
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("userName", res.data.user.name);

@@ -26,8 +26,6 @@ export default function AddNote() {
     setIsAuthenticated(true);
   }, [router]);
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL; // Your backend URL
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -39,7 +37,7 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL; // Your backend URL
     setLoading(true);
 
     try {
-      await axios.post(`${API_URL}/notes`, { title, content, userID });
+      await axios.post("/api/notes", { title, content, userID });
       alert("Note added successfully!");
       router.push("/../home"); // Redirect to homepage or notes list
     } catch (error) {

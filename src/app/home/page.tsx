@@ -4,8 +4,6 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import AudioControls from "../component/audioCtrl";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
-
 export default function Home() {
   const router = useRouter();
 
@@ -47,7 +45,7 @@ export default function Home() {
 
   const fetchNotes = async (storedID: string) => {
     try {
-      const res = await axios.get(`${API_URL}/notes/${storedID}`, { headers: getAuthHeaders() });
+      const res = await axios.get(`/api/notes/${storedID}`, { headers: getAuthHeaders() });
       setNotes(res.data || []);
     } catch (err) {
       console.error("Failed to fetch notes", err);
@@ -61,9 +59,9 @@ export default function Home() {
       const headers = getAuthHeaders();
       let res = null;
       try {
-        res = await axios.get(`${API_URL}/friends`, { headers });
+        res = await axios.get("/api/friends", { headers });
       } catch {
-        res = await axios.get(`${API_URL}/users/${storedID}/friends`, { headers });
+        res = await axios.get(`/api/users/${storedID}/friends`, { headers });
       }
       setFriends(res?.data || []);
     } catch (err) {
@@ -80,7 +78,7 @@ export default function Home() {
   const handleDelete = async (noteId: number) => {
     if (!window.confirm("Are you sure you want to delete this note?")) return;
     try {
-      await axios.delete(`${API_URL}/notes/${noteId}`, { headers: getAuthHeaders() });
+      await axios.delete(`/api/notes/${noteId}`, { headers: getAuthHeaders() });
       setNotes((s) => s.filter((note) => note.id !== noteId));
     } catch (err) {
       console.error("Delete failed", err);
@@ -109,7 +107,7 @@ export default function Home() {
     setSharingInProgress(true);
     setShareMsg(null);
     try {
-      await axios.post(`${API_URL}/share`, { noteId: noteToShare, userId: friendId }, { headers: getAuthHeaders() });
+      await axios.post("/api/share", { noteId: noteToShare, userId: friendId }, { headers: getAuthHeaders() });
       setShareMsg("Note shared successfully.");
     } catch (err: any) {
       console.error("Share failed", err);

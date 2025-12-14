@@ -3,8 +3,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter, useParams } from "next/navigation";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
-
 export default function EditNote() {
   const router = useRouter();
   const params = useParams();
@@ -44,7 +42,7 @@ export default function EditNote() {
       setError(null);
       try {
         // expects backend GET /notes/:id to return single note object
-        const res = await axios.get(`${API_URL}/notes/note/${noteId}`);
+        const res = await axios.get(`/api/notes/note/${noteId}`);
         const note = res.data;
         // if backend returns array, pick first
         const payload = Array.isArray(note) ? note[0] || {} : note || {};
@@ -68,7 +66,7 @@ export default function EditNote() {
     setSaving(true);
     setError(null);
     try {
-      await axios.put(`${API_URL}/notes/${noteId}`, { title, content });
+      await axios.put(`/api/notes/${noteId}`, { title, content });
       router.push("/home");
     } catch (err) {
       console.error(err);
