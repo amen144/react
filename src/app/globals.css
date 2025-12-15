@@ -28,3 +28,20 @@ body {
   margin-bottom: 20px;
   width: 90%;
 }
+
+/* Friends search form: stack on very small screens */
+@media (max-width: 700px) {
+  .friends-search-form {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .friends-search-form input,
+  .friends-search-form button {
+    width: 100%;
+  }
+
+  .friends-search-form button {
+    margin-top: 0.5rem; /* 8px */
+  }
+}

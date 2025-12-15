@@ -136,8 +136,8 @@ export default function FriendsPage() {
   };
 
   return (
-    <div className="min-h-screen p-6 backdrop-blur-xs border-1-gray-400">
-      <div className="max-w-4xl mx-auto">
+    <div className="min-h-screen p-4 pt-8 backdrop-blur-xs border-1-gray-400">
+      <div className="max-w-3xl mx-auto w-[90%]">
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-3xl font-bold text-green-700">Friends</h1>
           <button
@@ -155,16 +155,17 @@ export default function FriendsPage() {
         )}
 
         {/* Search Section */}
-        <div className="mb-8 bg-white/10 backdrop-blur-lg rounded-xl shadow p-6 border border-white/30">
+        <div className="mb-8 bg-white/10 backdrop-blur-lg rounded-xl shadow p-4 border border-white/30">
           <h2 className="text-2xl font-bold mb-4">Search Users</h2>
-          <form onSubmit={handleSearch} className="flex gap-2 mb-4">
+          <form onSubmit={handleSearch} className="friends-search-form flex gap-2 mb-4">
             <input
               type="text"
               placeholder="Search by name or email..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="flex-1 px-4 py-2 border rounded-lg bg-white/30"
+              className="flex-1 px-2 py-1 border rounded-lg bg-white/30"
             />
+         
             <button
               type="submit"
               className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
@@ -174,7 +175,7 @@ export default function FriendsPage() {
             </button>
           </form>
 
-          <div className="space-y-2">
+          <div className="space-y-1">
             {searchResults.length === 0 && searchQuery && !loading && (
               <p className="text-gray-400">No users found</p>
             )}
