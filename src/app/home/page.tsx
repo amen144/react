@@ -191,7 +191,7 @@ export default function Home() {
                 <div key={note.id} className="bg-white/20 rounded-xl shadow p-4 border border-white/30">
                   <div className="font-bold text-lg mb-2">{note.title}</div>
                   <div className="mb-2 text-sm">{note.content}</div>
-                  <div className="flex gap-2">
+                  <div className="flex gap-1">
                     <button className="bg-green-800 hover:bg-green-700 text-white px-2 py-1 rounded" onClick={() => handleEdit(note)}>
                       Edit
                     </button>
