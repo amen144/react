@@ -50,7 +50,7 @@ export default function FriendsPage() {
 
   const fetchFriends = async () => {
     try {
-      const res = await axios.get("/api/friends", { headers: getAuthHeaders() });
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/friends`, { headers: getAuthHeaders() });
       setFriends(res.data || []);
     } catch (error) {
       console.error('Failed to fetch friends:', error);
@@ -64,7 +64,7 @@ export default function FriendsPage() {
     setLoading(true);
     setMessage(null);
     try {
-      const res = await axios.get(`/api/search?q=${searchQuery}`, { headers: getAuthHeaders() });
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/search?q=${searchQuery}`, { headers: getAuthHeaders() });
       setSearchResults(res.data || []);
     } catch (error) {
       console.error('Search failed:', error);
@@ -77,7 +77,7 @@ export default function FriendsPage() {
   const sendFriendRequest = async (userId: number) => {
     try {
       await axios.post(
-        "/api/friends/request",
+        `${process.env.NEXT_PUBLIC_API_URL}/verify-login`,
         { recipientId: userId },
         { headers: getAuthHeaders() }
       );
@@ -93,7 +93,7 @@ export default function FriendsPage() {
   const acceptRequest = async (friendId: number) => {
     try {
       await axios.post(
-        "/api/friends/accept",
+        `${process.env.NEXT_PUBLIC_API_URL}/verify-login`,
         { friendId },
         { headers: getAuthHeaders() }
       );
@@ -110,7 +110,7 @@ export default function FriendsPage() {
   const declineRequest = async (requestId: number) => {
     try {
       await axios.delete(
-        `/api/friends/request/${requestId}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/friends/request/${requestId}`,
         { headers: getAuthHeaders() }
       );
       setIncomingRequests(incomingRequests.filter((r) => r.id !== requestId));
@@ -125,7 +125,7 @@ export default function FriendsPage() {
   const removeFriend = async (friendId: number) => {
     if (!window.confirm('Remove this friend?')) return;
     try {
-      await axios.delete(`/api/friends/${friendId}`, { headers: getAuthHeaders() });
+      await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/friends/${friendId}`, { headers: getAuthHeaders() });
       setFriends(friends.filter((f) => f.id !== friendId));
       setMessage('Friend removed');
       setTimeout(() => setMessage(null), 2000);

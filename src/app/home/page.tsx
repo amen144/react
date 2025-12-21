@@ -45,7 +45,7 @@ export default function Home() {
 
   const fetchNotes = async (storedID: string) => {
     try {
-      const res = await axios.get(`/api/notes/user/${storedID}`, { headers: getAuthHeaders() });
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/verify-login`, { headers: getAuthHeaders() });
       setNotes(res.data || []);
     } catch (err) {
       console.error("Failed to fetch notes", err);
@@ -59,9 +59,9 @@ export default function Home() {
       const headers = getAuthHeaders();
       let res = null;
       try {
-        res = await axios.get("/api/friends", { headers });
+        res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/verify-login`, { headers });
       } catch {
-        res = await axios.get(`/api/users/${storedID}/friends`, { headers });
+        res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/${storedID}/friends`, { headers });
       }
       setFriends(res?.data || []);
     } catch (err) {
@@ -78,7 +78,7 @@ export default function Home() {
   const handleDelete = async (noteId: number) => {
     if (!window.confirm("Are you sure you want to delete this note?")) return;
     try {
-      await axios.delete(`/api/notes/${noteId}`, { headers: getAuthHeaders() });
+      await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/notes/${noteId}`, { headers: getAuthHeaders() });
       setNotes((s) => s.filter((note) => note.id !== noteId));
     } catch (err) {
       console.error("Delete failed", err);

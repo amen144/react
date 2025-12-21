@@ -20,7 +20,7 @@ export default function Home() {
     setErrorMsg("");
     setSuccessMsg("");
     try {
-      const res = await axios.post("/api/auth/signup", { name, email, password });
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/signup`, { name, email, password });
       if (res.data?.requiresVerification) {
         setTempToken(res.data.tempToken || null);
         setAwaitingVerification(true);
@@ -38,7 +38,7 @@ export default function Home() {
     if (e) e.preventDefault();
     setErrorMsg("");
     try {
-      const res = await axios.post("/api/auth/verify-signup", {
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/verify-signup`, {
         email,
         code: verificationCode,
         tempToken,

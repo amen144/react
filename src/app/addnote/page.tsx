@@ -37,7 +37,7 @@ export default function AddNote() {
     setLoading(true);
 
     try {
-      await axios.post("/api/notes", { title, content, userID });
+      await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/notes`, { title, content, userID });
       alert("Note added successfully!");
       router.push("/../home"); // Redirect to homepage or notes list
     } catch (error) {
