@@ -17,7 +17,7 @@ export default function Home() {
     e.preventDefault();
     setErrorMsg("");
     try {
-      const res = await axios.post("/api/auth/login", { name, password });
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/login`, { name, password });
       if (res.data?.requires2FA) {
         setTempToken(res.data.tempToken || null);
         setAwaiting2FA(true);
@@ -38,7 +38,7 @@ export default function Home() {
     if (e) e.preventDefault();
     setErrorMsg("");
     try {
-      const res = await axios.post("/api/auth/verify-login", { code: verificationCode, tempToken });
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/verify-login`, { code: verificationCode, tempToken });
       if (res.data?.token && res.data?.user) {
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("userName", res.data.user.name);
