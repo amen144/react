@@ -45,7 +45,7 @@ export default function Home() {
 
   const fetchNotes = async (storedID: string) => {
     try {
-      const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/verify-login`, { headers: getAuthHeaders() });
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/notes/${userID}`, { headers: getAuthHeaders() });
       setNotes(res.data || []);
     } catch (err) {
       console.error("Failed to fetch notes", err);
@@ -59,9 +59,9 @@ export default function Home() {
       const headers = getAuthHeaders();
       let res = null;
       try {
-        res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/verify-login`, { headers });
+        res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/friends`, { headers });
       } catch {
-        res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/${storedID}/friends`, { headers });
+        res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/users/${userID}/friends`, { headers });
       }
       setFriends(res?.data || []);
     } catch (err) {
@@ -107,7 +107,7 @@ export default function Home() {
     setSharingInProgress(true);
     setShareMsg(null);
     try {
-      await axios.post("/api/share", { noteId: noteToShare, userId: friendId }, { headers: getAuthHeaders() });
+      await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/share`, { noteId: noteToShare, userId: friendId }, { headers: getAuthHeaders() });
       setShareMsg("Note shared successfully.");
     } catch (err: any) {
       console.error("Share failed", err);

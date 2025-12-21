@@ -16,7 +16,7 @@ export default function ResetPasswordPage() {
     if (!token) return setMessage("Invalid reset link");
 
     try {
-      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/verify-login`, {
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/reset-password`, {
         token,
         newPassword,
       });

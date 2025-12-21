@@ -74,14 +74,14 @@ export default function FriendsPage() {
     }
   };
 
-  const sendFriendRequest = async (userId: number) => {
+  const sendFriendRequest = async (reqId: number) => {
     try {
       await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/verify-login`,
-        { recipientId: userId },
+        `${process.env.NEXT_PUBLIC_API_URL}/friends/request/${reqId}`,
+        { recipientId: reqId },
         { headers: getAuthHeaders() }
       );
-      setSearchResults(searchResults.filter((u) => u.id !== userId));
+      setSearchResults(searchResults.filter((u) => u.id !== reqId));
       setMessage('Friend request sent!');
       setTimeout(() => setMessage(null), 2000);
     } catch (error: any) {
@@ -93,7 +93,7 @@ export default function FriendsPage() {
   const acceptRequest = async (friendId: number) => {
     try {
       await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/verify-login`,
+        `${process.env.NEXT_PUBLIC_API_URL}/friends/accept`,
         { friendId },
         { headers: getAuthHeaders() }
       );
