@@ -45,7 +45,7 @@ export default function Home() {
 
   const fetchNotes = async (storedID: string) => {
     try {
-      const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/notes`, { headers: getAuthHeaders() });
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/notes/${storedID}`, { headers: getAuthHeaders() });
       setNotes(res.data || []);
     } catch (err) {
       console.error("Failed to fetch notes", err);
