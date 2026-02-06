@@ -8,7 +8,7 @@ export default function Home() {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
-  const [awaiting2FA, setAwaiting2FA] = useState(false);
+  const [awaiting2FA, setAwaiting2FA] = useState(true);
   const [verificationCode, setVerificationCode] = useState("");
   const [tempToken, setTempToken] = useState<string | null>(null);
   const router = useRouter();
