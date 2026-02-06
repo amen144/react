@@ -8,7 +8,7 @@ export default function Home() {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
-  const [awaiting2FA, setAwaiting2FA] = useState(true);
+  const [awaiting2FA, setAwaiting2FA] = useState(false);
   const [verificationCode, setVerificationCode] = useState("");
   const [tempToken, setTempToken] = useState<string | null>(null);
   const router = useRouter();
@@ -55,7 +55,7 @@ export default function Home() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-cover p-8">
       <div className="w-full max-w-sm">
-        {!awaiting2FA ? (
+       {/* {!awaiting2FA ? (*/}
           <form onSubmit={handleSubmit} className="w-full bg-white/10 backdrop-blur-md rounded-xl shadow p-6 flex flex-col gap-3">
             <h1 className="text-2xl font-semibold text-center">Login</h1>
             {errorMsg && <div className="text-red-600 p-2 bg-red-100 rounded">{errorMsg}</div>}
@@ -70,7 +70,7 @@ export default function Home() {
               <a href="./singup/" className="text-blue-400">Sign Up</a>
             </div>
           </form>
-        ) : (null
+       {/* ) : (null
           /*
           <form onSubmit={handleVerifyLogin} className="w-full bg-white/10 backdrop-blur-md rounded-xl shadow p-6 flex flex-col gap-3">
             <h2 className="text-xl text-center">Enter verification code</h2>
@@ -79,8 +79,8 @@ export default function Home() {
             {<input value={verificationCode} onChange={e => setVerificationCode(e.target.value)} placeholder="Code" className="p-2 rounded bg-white/30" /> }
             <button type="submit" className="bg-blue-600 text-white py-2 rounded">Verify & Login</button>
             <button type="button" className="bg-gray-500 text-white py-2 rounded" onClick={() => { setAwaiting2FA(false); setTempToken(null); }}>Cancel</button>
-          </form>*/
-        )}
+          </form>
+        )}*/}
       </div>
     </div>
   );
