@@ -18,10 +18,10 @@ export default function Home() {
     setErrorMsg("");
     try {
       const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/login`, { name, password });
-      if (res.data?.requires2FA) {
+     /* if (res.data?.requires2FA) {
         setTempToken(res.data.tempToken || null);
-        setAwaiting2FA(true);
-      } else if (res.data?.token && res.data?.user) {
+       // setAwaiting2FA(true);
+      } else */if (res.data?.token && res.data?.user) {
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("userName", res.data.user.name);
         localStorage.setItem("userID", String(res.data.user.id));
