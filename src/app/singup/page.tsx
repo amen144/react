@@ -21,14 +21,14 @@ export default function Home() {
     setSuccessMsg("");
     try {
       const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/signup`, { name, email, password });
-      if (res.data?.requiresVerification) {
+      /*if (res.data?.requiresVerification) {
         setTempToken(res.data.tempToken || null);
         setAwaitingVerification(true);
         setSuccessMsg(res.data.message || "Verification code sent to your email.");
-      } else {
+      } else {*/
         setSuccessMsg(res.data?.message || "Signup successful!");
         setTimeout(() => router.push(".."), 900);
-      }
+      //}
     } catch (err: any) {
       setErrorMsg(err.response?.data?.message || "Signup failed");
     }
