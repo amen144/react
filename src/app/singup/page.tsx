@@ -80,15 +80,16 @@ export default function Home() {
             </div>
           </form>
         ) : (
-          <form onSubmit={handleVerify} className="w-full bg-white/10 backdrop-blur-md rounded-xl shadow p-6 flex flex-col gap-3">
+          // Verification form disabled
+          null
+          /* <form onSubmit={handleVerify} className="w-full bg-white/10 backdrop-blur-md rounded-xl shadow p-6 flex flex-col gap-3">
             <h2 className="text-xl text-center">Verify your email</h2>
             {errorMsg && <div className="text-red-600 p-2 bg-red-100 rounded">{errorMsg}</div>}
             {successMsg && <div className="text-green-700 p-2 bg-green-100 rounded">{successMsg}</div>}
-            {/* Verification code field disabled */}
-            {/* <input value={verificationCode} onChange={e => setVerificationCode(e.target.value)} placeholder="Verification code" className="p-2 rounded bg-white/30" /> */}
+            <input value={verificationCode} onChange={e => setVerificationCode(e.target.value)} placeholder="Verification code" className="p-2 rounded bg-white/30" />
             <button type="submit" className="bg-blue-600 text-white py-2 rounded">Verify</button>
             <button type="button" className="bg-gray-500 text-white py-2 rounded" onClick={() => { setAwaitingVerification(false); setTempToken(null); }}>Cancel</button>
-          </form>
+          </form> */
         )}
       </div>
     </div>
