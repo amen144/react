@@ -25,7 +25,7 @@ export default function Home() {
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("userName", res.data.user.name);
         localStorage.setItem("userID", String(res.data.user.id));
-        router.push("/home");
+        router.push("./home");
       } else {
         setErrorMsg(res.data?.message || "Login failed");
       }
@@ -34,7 +34,7 @@ export default function Home() {
     }
   };
 
-  const handleVerifyLogin = async (e?: React.FormEvent) => {
+  /*const handleVerifyLogin = async (e?: React.FormEvent) => {
     if (e) e.preventDefault();
     setErrorMsg("");
     try {
@@ -43,14 +43,14 @@ export default function Home() {
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("userName", res.data.user.name);
         localStorage.setItem("userID", String(res.data.user.id));
-        router.push("/home");
+        router.push("./home");
       } else {
         setErrorMsg(res.data?.message || "Verification failed");
       }
     } catch (err: any) {
       setErrorMsg(err.response?.data?.message || "Verification request failed");
     }
-  };
+  };*/
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-cover p-8">

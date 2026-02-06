@@ -34,7 +34,7 @@ export default function Home() {
     }
   };
 
-  const handleVerify = async (e?: React.FormEvent) => {
+  /*const handleVerify = async (e?: React.FormEvent) => {
     if (e) e.preventDefault();
     setErrorMsg("");
     try {
@@ -55,7 +55,7 @@ export default function Home() {
       setErrorMsg(err.response?.data?.message || "Verification request failed");
     }
   };
-
+*/
   return (
     <div className="flex min-h-screen items-center justify-center bg-cover p-8">
       <div className="w-full max-w-sm">
