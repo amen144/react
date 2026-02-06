@@ -67,8 +67,9 @@ export default function Home() {
             <h1 className="text-2xl font-semibold text-center">Sign up</h1>
             {errorMsg && <div className="text-red-600 p-2 bg-red-100 rounded">{errorMsg}</div>}
             {successMsg && <div className="text-green-700 p-2 bg-green-100 rounded">{successMsg}</div>}
+            {/* Email validation disabled */}
             <input value={name} onChange={e => setUsername(e.target.value)} placeholder="Username" className="p-2 rounded bg-white/30" />
-            <input value={email} onChange={e => setEmail(e.target.value)} placeholder="E-mail" type="email" className="p-2 rounded bg-white/30" />
+            <input value={email} onChange={e => setEmail(e.target.value)} placeholder="E-mail" type="text" className="p-2 rounded bg-white/30" />
             <div className="relative">
               <input value={password} onChange={e => setPassword(e.target.value)} placeholder="Password" type={showPassword ? "text" : "password"} className="p-2 rounded w-full bg-white/30" />
               <button type="button" className="absolute right-2 top-2 text-sm" onClick={() => setShowPassword(s => !s)}>{showPassword ? "Hide" : "Show"}</button>
@@ -83,7 +84,8 @@ export default function Home() {
             <h2 className="text-xl text-center">Verify your email</h2>
             {errorMsg && <div className="text-red-600 p-2 bg-red-100 rounded">{errorMsg}</div>}
             {successMsg && <div className="text-green-700 p-2 bg-green-100 rounded">{successMsg}</div>}
-            <input value={verificationCode} onChange={e => setVerificationCode(e.target.value)} placeholder="Verification code" className="p-2 rounded bg-white/30" required />
+            {/* Required validation disabled */}
+            <input value={verificationCode} onChange={e => setVerificationCode(e.target.value)} placeholder="Verification code" className="p-2 rounded bg-white/30" />
             <button type="submit" className="bg-blue-600 text-white py-2 rounded">Verify</button>
             <button type="button" className="bg-gray-500 text-white py-2 rounded" onClick={() => { setAwaitingVerification(false); setTempToken(null); }}>Cancel</button>
           </form>
