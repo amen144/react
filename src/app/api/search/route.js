@@ -14,7 +14,7 @@ export async function GET(req) {
     }
 
     const backendResponse = await fetch(
-      `http://myapp11.ddns.net:5000/search?q=${encodeURIComponent(query || "")}`,
+      `${process.env.SERVICE}/search?q=${encodeURIComponent(query || "")}`,
       {
         method: "GET",
         headers

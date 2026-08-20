@@ -13,7 +13,7 @@ export async function GET(req, { params }) {
     }
 
     const backendResponse = await fetch(
-      `http://myapp11.ddns.net:5000/users/${userID}/friends`,
+      `${process.env.SERVICE}/users/${userID}/friends`,
       {
         method: "GET",
         headers

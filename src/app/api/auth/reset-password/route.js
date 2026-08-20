@@ -5,7 +5,7 @@ export async function POST(req) {
     const body = await req.json();
 
     const backendResponse = await fetch(
-      "http://myapp11.ddns.net:5000/auth/reset-password",
+      `${process.env.SERVICE}/auth/reset-password`,
       {
         method: "POST",
         headers: {

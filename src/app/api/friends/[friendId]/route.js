@@ -13,7 +13,7 @@ export async function DELETE(req, { params }) {
     }
 
     const backendResponse = await fetch(
-      `http://myapp11.ddns.net:5000/friends/${friendId}`,
+      `${process.env.SERVICE}/friends/${friendId}`,
       {
         method: "DELETE",
         headers

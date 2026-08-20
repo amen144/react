@@ -13,7 +13,7 @@ export async function POST(req) {
     }
 
     const backendResponse = await fetch(
-      "http://myapp11.ddns.net:5000/share",
+      `${process.env.SERVICE}/share`,
       {
         method: "POST",
         headers,

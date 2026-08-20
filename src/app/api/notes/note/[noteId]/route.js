@@ -5,7 +5,7 @@ export async function GET(req, { params }) {
     const { noteId } = params;
 
     const backendResponse = await fetch(
-      `http://myapp11.ddns.net:5000/notes/note/${noteId}`,
+      `${process.env.SERVICE}/notes/note/${noteId}`,
       {
         method: "GET",
         headers: {

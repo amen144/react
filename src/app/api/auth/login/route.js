@@ -5,7 +5,7 @@ export async function POST(req) {
     const body = await req.json();
 
     const backendResponse = await fetch(
-      "http://myapp11.ddns.net:5000/login",
+      `${process.env.SERVICE}/login`,
       {
         method: "POST",
         headers: {

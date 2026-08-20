@@ -6,7 +6,7 @@ export async function PUT(req, { params }) {
     const body = await req.json();
 
     const backendResponse = await fetch(
-      `http://myapp11.ddns.net:5000/notes/${noteId}`,
+      `${process.env.SERVICE}/notes/${noteId}`,
       {
         method: "PUT",
         headers: {
@@ -42,7 +42,7 @@ export async function DELETE(req, { params }) {
     }
 
     const backendResponse = await fetch(
-      `http://myapp11.ddns.net:5000/notes/${noteId}`,
+      `${process.env.SERVICE}/notes/${noteId}`,
       {
         method: "DELETE",
         headers
