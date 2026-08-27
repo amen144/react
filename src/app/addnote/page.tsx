@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import AudioControls from "../component/audioCtrl";
 export default function AddNote() {
   const router = useRouter();
   const [title, setTitle] = useState("");
