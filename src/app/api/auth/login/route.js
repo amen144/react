@@ -5,7 +5,7 @@ export async function POST(req) {
     const body = await req.json();
 
     const backendResponse = await fetch(
-      `${process.env.SERVICE}/login`,
+      `${process.env.NEXT_PUBLIC_API_URL}/login`,
       {
         method: "POST",
         headers: {

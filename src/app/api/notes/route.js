@@ -5,7 +5,7 @@ export async function POST(req) {
     const body = await req.json();
 
     const backendResponse = await fetch(
-      `${process.env.SERVICE}/notes`,
+      `${process.env.NEXT_PUBLIC_API_URL}/notes`,
       {
         method: "POST",
         headers: {

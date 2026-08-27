@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Play, Pause, Volume2, Music2 } from "lucide-react";
 
-const API_BASE = process.env.SERVICE || "http://192.168.1.4:5000";
+const API_BASE = process.env.NEXT_PUBLIC_API_URL;
 
 interface Song {
   id: number;

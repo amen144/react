@@ -12,7 +12,7 @@ export async function GET(req) {
     }
 
     const backendResponse = await fetch(
-      `${process.env.SERVICE}/friends`,
+      `${process.env.NEXT_PUBLIC_API_URL}/friends`,
       {
         method: "GET",
         headers

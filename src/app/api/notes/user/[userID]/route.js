@@ -13,7 +13,7 @@ export async function GET(req, { params }) {
     }
 
     const backendResponse = await fetch(
-      `${process.env.SERVICE}/notes/${userID}`,
+      `${process.env.NEXT_PUBLIC_API_URL}/notes/${userID}`,
       {
         method: "GET",
         headers

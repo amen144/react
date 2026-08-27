@@ -14,7 +14,7 @@ export async function GET(req) {
     }
 
     const backendResponse = await fetch(
-      `${process.env.SERVICE}/search?q=${encodeURIComponent(query || "")}`,
+      `${process.env.NEXT_PUBLIC_API_URL}/search?q=${encodeURIComponent(query || "")}`,
       {
         method: "GET",
         headers

@@ -6,7 +6,7 @@ export async function PUT(req, { params }) {
     const body = await req.json();
 
     const backendResponse = await fetch(
-      `${process.env.SERVICE}/notes/${noteId}`,
+      `${process.env.NEXT_PUBLIC_API_URL}/notes/${noteId}`,
       {
         method: "PUT",
         headers: {
@@ -42,7 +42,7 @@ export async function DELETE(req, { params }) {
     }
 
     const backendResponse = await fetch(
-      `${process.env.SERVICE}/notes/${noteId}`,
+      `${process.env.NEXT_PUBLIC_API_URL}/notes/${noteId}`,
       {
         method: "DELETE",
         headers

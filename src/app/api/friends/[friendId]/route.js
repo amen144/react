@@ -13,7 +13,7 @@ export async function DELETE(req, { params }) {
     }
 
     const backendResponse = await fetch(
-      `${process.env.SERVICE}/friends/${friendId}`,
+      `${process.env.NEXT_PUBLIC_API_URL}/friends/${friendId}`,
       {
         method: "DELETE",
         headers

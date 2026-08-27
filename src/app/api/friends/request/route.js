@@ -13,7 +13,7 @@ export async function POST(req) {
     }
 
     const backendResponse = await fetch(
-      `${process.env.SERVICE}/friends/request`,
+      `${process.env.NEXT_PUBLIC_API_URL}/friends/request`,
       {
         method: "POST",
         headers,

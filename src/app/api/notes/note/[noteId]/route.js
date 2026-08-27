@@ -5,7 +5,7 @@ export async function GET(req, { params }) {
     const { noteId } = params;
 
     const backendResponse = await fetch(
-      `${process.env.SERVICE}/notes/note/${noteId}`,
+      `${process.env.NEXT_PUBLIC_API_URL}/notes/note/${noteId}`,
       {
         method: "GET",
         headers: {
